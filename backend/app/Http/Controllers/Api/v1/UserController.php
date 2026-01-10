@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    function hello(){
-       return response()->json(["message" =>"Testando endpoint"],200);
+    public function getUsers(){
+        
     }
 }

@@ -9,6 +9,6 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::prefix('v1')->group(function(){
-    Route::get('users/hello', [UserController::class, 'hello']);
+    Route::get('/users', [UserController::class, 'getUsers']);
 });
 
