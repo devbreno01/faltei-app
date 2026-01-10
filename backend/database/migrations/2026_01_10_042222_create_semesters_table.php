@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('semesters', function (Blueprint $table) {
             $table->id();
             $table->date('starter_month');
-            $table->integer('period');
+            $table->float('period');
             $table->date('end_month');
             $table->foreignId('user_id')->references('id')->on('users')->cascadeOnDelete();
             $table->timestamps();

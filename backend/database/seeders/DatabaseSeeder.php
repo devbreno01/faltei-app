@@ -2,9 +2,12 @@
 
 namespace Database\Seeders;
 
+use App\Models\Semester;
+use App\Models\Subject;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\SubjectDay;
 
 class DatabaseSeeder extends Seeder
 {
@@ -17,9 +20,14 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        User::factory()->count(10)->create();
+        Semester::factory()->count(5)->create();
+        Subject::factory()
+            ->count(5)
+            ->has(
+                SubjectDay::factory()->count(2)
+            )
+            ->create();
+
     }
 }
