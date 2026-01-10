@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:15
+    container_name: postgres_faltei
+    restart: always
+    environment:
+      POSTGRES_DB: faltei
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: secret
+    ports:
+      - "5434:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+
+
+volumes:
+  pgdata:
+
+#subir container em diretorio especifico ==> docker compose -f docker-compose.dev.yml up -d
+#entrar no container ==>  docker exec -it dprazo bash
