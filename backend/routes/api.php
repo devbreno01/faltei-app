@@ -10,5 +10,8 @@ Route::get('/user', function (Request $request) {
 
 Route::prefix('v1')->group(function(){
     Route::get('/users', [UserController::class, 'getUsers']);
+    Route::get('/users/{id}', [UserController::class, 'getUser']);
+    Route::post('/user/create', [UserController::class, 'store']);
+    
 });
 
