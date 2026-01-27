@@ -58,16 +58,38 @@ class UserService {
         $user = $this->user->find($id);
 
         if($user){
-            return $user->update($validatedData);
+            try{
+
+                $user->update($validatedData);
+                return $this->response("success",[null],"usuário atualizado com sucesso", 200);
+            }catch(\Exception $e){
+                return $this->response("failed",[null],"falha ao atualizar o usuário", 304);
+            }
         }
+        return $this->response("failed",[null],"usuário não encontrado", 500);
+
+
     }
 
-    
     public function destroy(int $id){
         $user = $this->user->find($id);
 
         if($user){
-            return $user->delete();
+            try{
+                $user->delete();
+                return $this->response("success",[null],"usuário deletado com sucesso", 200);
+            }catch(\Exception $e){
+                return $this->response("failed",[null],"falha ao deletar o usuário", 500);
+            }
         }
+
+        return $this->response("failed",[null],"usuário não encontrado", 500);
+    }
+
+    private function response(string $status, Array $data=[] , string $message, int $statusCode)
+    {
+        return response()->json(["status" => $status,
+                                    "data" => $data,
+                                    "message" => $message],$statusCode);
     }
 }

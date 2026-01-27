@@ -28,5 +28,15 @@ class UserController extends Controller
         return $this->service->getUserById($id);
     }
 
+    public function updateUser(StoreUserRequest $request, $id)
+    {
+        return $this->service->update($request->validated(),$id);
+
+    }
+
+    public function destroy($id)
+    {
+        return $this->service->destroy($id);
+    }
 
 }
