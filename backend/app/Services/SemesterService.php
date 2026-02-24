@@ -6,7 +6,7 @@ use App\Models\Semester;
 use App\Http\Requests\StoreSemesterRequest;
 
 class SemesterService {
-     private $semester;
+    private $semester;
 
     public function __construct(Semester $semester)
     {
