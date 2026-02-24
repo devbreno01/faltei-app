@@ -17,14 +17,10 @@ class SemesterController extends Controller
     }
 
     public function getSemesters(){
-        return response()->json("teste");
-        die();
         return $this->service->getSemesters();
     }
 
     public function store(StoreSemesterRequest $request){
-        return response()->json(['teste']);
-        die();
         return $this->service->store($request);
     }
 
