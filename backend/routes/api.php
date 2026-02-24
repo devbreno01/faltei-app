@@ -40,6 +40,7 @@ Route::prefix('v1')->group(function(){
         Route::delete('subjects/{id}',[SubjectController::class, 'destroy']);
         Route::post('subject/create', [SubjectController::class, 'store']);
 
+        
 
     });
 
