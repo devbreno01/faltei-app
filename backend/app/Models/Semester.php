@@ -5,9 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
+use Laravel\Sanctum\HasApiTokens;
+
 class Semester extends Model
 {
-    use HasFactory;
+    use HasFactory, HasApiTokens;
 
     protected $table = 'semesters';
 

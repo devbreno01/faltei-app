@@ -15,6 +15,7 @@ class UserService {
 
     public function store(StoreUserRequest $request){
         try{
+
             $this->user->create($request->validated());
             return response()->json(["status" => "success",
                                     "data" => null,
