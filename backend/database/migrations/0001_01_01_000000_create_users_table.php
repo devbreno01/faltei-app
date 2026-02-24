@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('nickname')->nullable();
             $table->string('icon')->nullable();
+            $table->foreignId('tenant_id')->constrained('tenants')->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();
         });

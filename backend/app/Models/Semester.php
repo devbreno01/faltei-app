@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use Laravel\Sanctum\HasApiTokens;
 
-class Semester extends Model
+class Semester extends TenantModel
 {
     use HasFactory, HasApiTokens;
 
@@ -22,5 +22,10 @@ class Semester extends Model
 
     public function user(){
         return $this->belongsTo(User::class);
+    }
+
+    public function tenants()
+    {
+        return $this->belongsTo(Tenant::class);
     }
 }
