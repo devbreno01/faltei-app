@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\v1\AuthController;
 use App\Http\Controllers\Api\v1\SemesterController;
 use App\Http\Controllers\Api\v1\SubjectController;
 use App\Http\Controllers\Api\v1\UserController;
+use App\Http\Controllers\Api\v1\SubjectDayController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -40,7 +41,13 @@ Route::prefix('v1')->group(function(){
         Route::delete('subjects/{id}',[SubjectController::class, 'destroy']);
         Route::post('subject/create', [SubjectController::class, 'store']);
 
-        
+        Route::get('/subjectsDay', [SubjectDayController::class, 'getSubjectDays']);
+        Route::get('/subjectsDay/{id}', [SubjectDayController::class, 'getSubjectDay']);
+        Route::put('subjectsDay/{id}',[SubjectDayController::class, 'updateSubjectDay']);
+        Route::delete('subjectsDay/{id}',[SubjectDayController::class, 'destroy']);
+        Route::post('subjectDay/create', [SubjectDayController::class, 'store']);
+
+
 
     });
 

@@ -25,11 +25,11 @@ class SubjectDayController extends Controller
         return $this->service->store($request);
     }
 
-    public function getSubject($id){
+    public function getSubjectDay($id){
         return $this->service->getSubjectDayById($id);
     }
 
-    public function updateSubject(StoreSubjectDaysRequest $request, $id)
+    public function updateSubjectDay(StoreSubjectDaysRequest $request, $id)
     {
         return $this->service->update($request->validated(),$id);
 
