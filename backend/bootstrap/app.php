@@ -4,6 +4,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 
+
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
         web: __DIR__.'/../routes/web.php',
@@ -15,5 +16,22 @@ return Application::configure(basePath: dirname(__DIR__))
         //
     })
     ->withExceptions(function (Exceptions $exceptions): void {
-        //
-    })->create();
+
+        $exceptions->render(function (Throwable $e, $request) {
+
+            // Force JSON for all API routes
+            if ($request->is('api/*')) {
+
+                return response()->json([
+                    'status'  => 'error',
+                    'message' => config('app.debug')
+                        ? $e->getMessage()
+                        : 'Unexpected error occurred.',
+                ], 500);
+            }
+
+        });
+
+    })
+
+    ->create();

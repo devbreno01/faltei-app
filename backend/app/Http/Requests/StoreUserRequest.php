@@ -24,14 +24,18 @@ class StoreUserRequest extends FormRequest
         $rules = [
             "name" =>"required | string",
             "email" => "required",
-            "password"=> "required"
+            "password"=> "required",
+            "nickname"=>"required",
+            "icon"  => "required"
         ];
 
         if($this->method() =='PUT'){
             $rules = [
                 "email" => "required | string",
                 "password" => "required",
-                "email" => "required"
+                "email" => "required",
+                "nickname"=>"required",
+                "icon"  => "required"
             ];
         }
         return $rules;

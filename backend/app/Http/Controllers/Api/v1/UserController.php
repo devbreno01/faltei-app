@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUserRequest;
 use App\Services\UserService;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
     private $service;
@@ -21,6 +21,7 @@ class UserController extends Controller
     }
 
     public function store(StoreUserRequest $request){
+        
         return $this->service->store($request);
     }
 
