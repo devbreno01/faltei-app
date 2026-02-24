@@ -14,20 +14,23 @@ Route::prefix('v1')->group(function(){
 
 
     Route::post('user/login', [AuthController::class, 'login']);
-    Route::post('user/logout', [AuthController::class, 'logout']);
+
     Route::post('/user/create', [UserController::class, 'store']);
 
     Route::group(['middleware' => ['auth:sanctum']], function(){
+        Route::post('user/logout', [AuthController::class, 'logout']);
+
         Route::get('/users', [UserController::class, 'getUsers']);
         Route::get('/users/{id}', [UserController::class, 'getUser']);
         Route::put('users/{id}',[UserController::class, 'updateUser']);
         Route::delete('users/{id}',[UserController::class, 'destroy']);
 
-        Route::post('/semester/create', [SemesterController::class, 'store']);
+
         Route::get('/semesters', [SemesterController::class, 'getSemesters']);
         Route::get('/semesters/{id}', [SemesterController::class, 'getSemester']);
         Route::put('semesters/{id}',[SemesterController::class, 'updateSemester']);
         Route::delete('semesters/{id}',[SemesterController::class, 'destroy']);
+        Route::post('semester/create', [SemesterController::class, 'store']); 
 
     });
 

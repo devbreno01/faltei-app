@@ -11,7 +11,7 @@ class StoreSemesterRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,11 +22,10 @@ class StoreSemesterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "starter_month" =>"required | date",
-            "period" => "required | float",
-            "pend_monthd"=> "required | date",
-            "user_id"=>"integer"
-
+            "starter_month" => "required|date",
+            "period" => "required|numeric",
+            "end_month" => "required|date",
+            "user_id" => "required|integer"
         ];
     }
 }
