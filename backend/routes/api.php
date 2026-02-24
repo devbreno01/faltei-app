@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\v1\AuthController;
 use App\Http\Controllers\Api\v1\SemesterController;
+use App\Http\Controllers\Api\v1\SubjectController;
 use App\Http\Controllers\Api\v1\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -30,7 +31,15 @@ Route::prefix('v1')->group(function(){
         Route::get('/semesters/{id}', [SemesterController::class, 'getSemester']);
         Route::put('semesters/{id}',[SemesterController::class, 'updateSemester']);
         Route::delete('semesters/{id}',[SemesterController::class, 'destroy']);
-        Route::post('semester/create', [SemesterController::class, 'store']); 
+        Route::post('semester/create', [SemesterController::class, 'store']);
+
+
+        Route::get('/subjects', [SubjectController::class, 'getSubjects']);
+        Route::get('/subjects/{id}', [SubjectController::class, 'getSubject']);
+        Route::put('subjects/{id}',[SubjectController::class, 'updateSubject']);
+        Route::delete('subjects/{id}',[SubjectController::class, 'destroy']);
+        Route::post('subject/create', [SubjectController::class, 'store']);
+
 
     });
 
