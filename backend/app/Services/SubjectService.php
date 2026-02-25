@@ -14,8 +14,11 @@ class SubjectService {
 
     public function store(StoreSubjectRequest $request){
         try{
+            $data = $request->validated();
+            $data['tenant_id'] = $request->user()->tenant_id;
+            
+            $this->subject->create($data);
 
-            $this->subject->create($request->validated());
             return response()->json(["status" => "success",
                                     "data" => null,
                                     "message" => "Matéria cadastrada com sucesso"],201);
