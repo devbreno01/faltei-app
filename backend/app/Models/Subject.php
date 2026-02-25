@@ -17,7 +17,8 @@ class Subject extends TenantModel
         'total_hours',
         'hours_per_class',
         'color',
-        'semester_id'
+        'semester_id',
+        'tenant_id'
     ];
 
     public function semester(){

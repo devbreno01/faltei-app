@@ -24,9 +24,7 @@ class StoreSemesterRequest extends FormRequest
         return [
             "starter_month" => "required|date",
             "period" => "required|numeric",
-            "end_month" => "required|date",
-            "user_id" => "required|integer",
-            "tenant_id" => "required|integer"
+            "end_month" => "required|date"
         ];
     }
 }

@@ -18,6 +18,7 @@ class Semester extends TenantModel
         'period',
         'end_month',
         'user_id',
+        'tenant_id'
     ];
 
     public function user(){

@@ -15,8 +15,12 @@ class SemesterService {
 
     public function store(StoreSemesterRequest $request){
         try{
+            $data = $request->validated();
 
-            $this->semester->create($request->validated());
+            $data['tenant_id'] = $request->user()->tenant_id;
+            $data['user_id']   = $request->user()->id;
+
+            $this->semester->create($data);
             return response()->json(["status" => "success",
                                     "data" => null,
                                     "message" => "Semestre cadastrado com sucesso"],201);
