@@ -1,0 +1,13 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use App\Models\Scopes\TenantScope;
+class TenantModel extends Model
+{
+    protected static function booted(): void
+    {
+        static::addGlobalScope(new TenantScope);
+    }
+}

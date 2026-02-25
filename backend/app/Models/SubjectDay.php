@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SubjectDay extends Model
+class SubjectDay extends TenantModel
 {
     use HasFactory;
 
@@ -13,10 +13,16 @@ class SubjectDay extends Model
 
     protected $fillable = [
         'day',
-        'subject_id'
+        'subject_id',
+        'tenant_id'
     ];
 
     public function subject(){
-        return $this->belongsTo(Subject::class); 
+        return $this->belongsTo(Subject::class);
+    }
+
+    public function tenants()
+    {
+        return $this->belongsTo(Tenant::class);
     }
 }

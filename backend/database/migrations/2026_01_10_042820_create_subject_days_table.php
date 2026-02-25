@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('day', 10);
 
             $table->foreignId('subject_id')->references('id')->on('subjects')->cascadeOnDelete();
+            $table->foreignId('tenant_id')->constrained('tenants')->onDelete('cascade');
             $table->timestamps();
         });
     }

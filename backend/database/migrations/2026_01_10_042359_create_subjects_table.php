@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('hours_per_class');
             $table->string('color');
             $table->foreignId('semester_id')->references('id')->on('semesters')->cascadeOnDelete();
+            $table->foreignId('tenant_id')->constrained('tenants')->onDelete('cascade');
             $table->timestamps();
         });
     }

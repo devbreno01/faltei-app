@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Subject extends Model
+class Subject extends TenantModel
 {
     use HasFactory;
 
@@ -17,7 +17,8 @@ class Subject extends Model
         'total_hours',
         'hours_per_class',
         'color',
-        'semester_id'
+        'semester_id',
+        'tenant_id'
     ];
 
     public function semester(){
@@ -26,5 +27,10 @@ class Subject extends Model
 
     public function subjectDays(){
         return $this->hasMany(SubjectDay::class);
+    }
+
+    public function tenants()
+    {
+        return $this->belongsTo(Tenant::class);
     }
 }
