@@ -13,7 +13,8 @@ class SubjectDay extends TenantModel
 
     protected $fillable = [
         'day',
-        'subject_id'
+        'subject_id',
+        'tenant_id'
     ];
 
     public function subject(){

@@ -14,8 +14,10 @@ class SubjectDayService {
 
     public function store(StoreSubjectDaysRequest $request){
         try{
-
-            $this->subjectDay->create($request->validated());
+            $data = $request->validated();
+            $data['tenant_id'] = $request->user()->tenant_id;
+            
+            $this->subjectDay->create($data);
             return response()->json(["status" => "success",
                                     "data" => null,
                                     "message" => "Dia da matéria cadastrado com sucesso"],201);
