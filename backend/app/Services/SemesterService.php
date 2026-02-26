@@ -34,13 +34,17 @@ class SemesterService {
     }
 
     public function getSemesters(){
-        $semesters = $this->semester->paginate(10);
+        try{
+            $semesters = $this->semester->paginate(10);
 
-        return response()->json(["status" =>"success",
-                                "data" => $semesters,
-                                "message" => "Semestres exibidos com sucesso"],200);
+            return response()->json(["status" =>"success",
+                                    "data" => $semesters,
+                                    "message" => "Semestres exibidos com sucesso"],200);
 
-
+        }catch(\Exception $e){
+            return response()->json(["status" =>"error",
+                                "message" => $e->getMessage()],500);
+        }
     }
 
     public function getSemesterById($id){
