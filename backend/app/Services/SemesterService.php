@@ -33,17 +33,30 @@ class SemesterService {
 
     }
 
-    public function getSemesters(){
-        try{
+    public function getSemesters()
+    {
+        try {
             $semesters = $this->semester->paginate(10);
 
-            return response()->json(["status" =>"success",
-                                    "data" => $semesters,
-                                    "message" => "Semestres exibidos com sucesso"],200);
+            if ($semesters->total() === 0) {
+                return response()->json([
+                    "status" => "success",
+                    "data" => [],
+                    "message" => "Nenhum semestre encontrado."
+                ], 200);
+            }
 
-        }catch(\Exception $e){
-            return response()->json(["status" =>"error",
-                                "message" => $e->getMessage()],500);
+            return response()->json([
+                "status" => "success",
+                "data" => $semesters,
+                "message" => "Semestres exibidos com sucesso"
+            ], 200);
+
+        } catch (\Exception $e) {
+            return response()->json([
+                "status" => "error",
+                "message" => $e->getMessage()
+            ], 500);
         }
     }
 
