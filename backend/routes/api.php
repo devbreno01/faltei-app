@@ -12,11 +12,9 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
+
 Route::prefix('v1')->group(function(){
-
-
     Route::post('user/login', [AuthController::class, 'login']);
-
     Route::post('/user/create', [UserController::class, 'store']);
 
     Route::group(['middleware' => ['auth:sanctum']], function(){
